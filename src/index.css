@@ -6,11 +6,15 @@
 
 @layer base {
     h1 {
-        @apply text-white text-3xl font-bold;
+        @apply text-white text-3xl font-bold md:text-[40px];
     }
 
     button {
         @apply text-white font-bold text-xl;
+    }
+
+    p {
+        @apply font-bold
     }
 
 }
