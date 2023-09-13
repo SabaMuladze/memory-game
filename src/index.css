@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@700&display=swap');
+
+@layer base {
+    h1 {
+        @apply text-white text-3xl font-bold;
+    }
+
+    button {
+        @apply text-white font-bold text-xl;
+    }
+
+}
+
+* {
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
