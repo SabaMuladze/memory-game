@@ -23,6 +23,13 @@
 
 }
 
+@layer components {
+    .active {
+        @apply bg-[#304859] !important
+    }
+
+}
+
 * {
     font-family: 'Atkinson Hyperlegible', sans-serif;
     margin: 0;
