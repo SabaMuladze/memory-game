@@ -4,13 +4,21 @@ import { useState } from "react"
 
 const Game = () => {
     const [showMenu, setShowMenu] = useState(false)
+
+    const menuHandler = () => {
+        setShowMenu(!showMenu)
+    }
     return (
         <>
             <header className="flex justify-between pt-7 px-6 items-center">
                 <h2 className="">memory</h2>
-                <button className="px-5 py-2 bg-[#FDA214] rounded-3xl ">Menu</button>
+                <button onClick={menuHandler} className="px-5 py-2 bg-[#FDA214] rounded-3xl md:hidden ">Menu</button>
+                <div className="max-md:hidden flex gap-4">
+                    <button onClick={(e) => location.reload()} className="px-5 py-2 bg-[#FDA214] rounded-3xl ">Restart</button>
+                    <button className="px-5 py-2 bg-[#DFE7EC] rounded-3xl text-[#304859] ">New Game</button>
+                </div>
             </header>
-            <Menu />
+            {showMenu == true ? <Menu setShowMenu={setShowMenu} /> : null}
         </>
     )
 }
