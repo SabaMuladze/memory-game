@@ -1,3 +1,7 @@
+import { Link } from "react-router-dom"
+import Game from './Game'
+
+
 const GameSet = () => {
     return (
         <section className="bg-[#152938] w-full h-screen flex flex-col items-center px-6">
@@ -26,7 +30,7 @@ const GameSet = () => {
                         <button className="py-[10px] w-[50%] bg-[#BCCED9] rounded-3xl">4x4</button>
                         <button className="py-[10px] w-[50%] bg-[#BCCED9] rounded-3xl">6x6</button>
                     </div>
-                    <button className="w-full py-3 bg-[#FDA214] rounded-3xl mt-8">Start Game</button>
+                    <button className="w-full py-3 bg-[#FDA214] rounded-3xl mt-8"><Link to={'/game'} >Start Game</Link></button>
                 </div>
             </main>
         </section>

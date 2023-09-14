@@ -9,6 +9,10 @@
         @apply text-white text-3xl font-bold md:text-[40px];
     }
 
+    h2 {
+        @apply text-[#152938] text-3xl font-bold md:text-[40px];
+    }
+
     button {
         @apply text-white font-bold text-xl;
     }

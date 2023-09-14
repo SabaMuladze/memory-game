@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import GameSet from './components/GameSet'
 import Game from './components/Game'
+import Menu from './components/Menu'
 
 
 
