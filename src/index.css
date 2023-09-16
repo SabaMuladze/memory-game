@@ -28,6 +28,15 @@
         @apply bg-[#304859] !important
     }
 
+    .card {
+        @apply flex items-center justify-center max-md:h-[72px] max-md:p-[42%] max-md:w-[72px] bg-[#304859] rounded-full
+    }
+
+    .card.flipped {
+        @apply bg-[#BCCED9] transition-all
+    }
+
+
 }
 
 * {

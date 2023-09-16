@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom"
 import Menu from "./Menu"
 import { useState } from "react"
+import Grid from "./Grid"
 
 const Game = () => {
     const [showMenu, setShowMenu] = useState(false)
@@ -13,6 +14,25 @@ const Game = () => {
     const playerNum = searchParams.get('playerNum')
     const gridSize = searchParams.get('gridSize')
     console.log(gridSize);
+
+    const symbolsData = [
+        {
+            content: ["🌟", "🍎", "🍉", "🍕", "🍔", "🍟", "🍦", "🍭"],
+        },
+        {
+            content: ["🌟", "🍎", "🍉", "🍕", "🍔", "🍟", "🍦", "🍭", "🚀", "🎈", "🎉", "🎁", "🎂", "🎮", "🎸", "🎺", '🐱‍🚀', '🐱‍🐉'],
+
+        }
+    ]
+
+    const numsData = [
+        {
+            content: ['1', '2', '3', '4', '5', '6', '7', '8']
+        },
+        {
+            content: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18']
+        }
+    ]
 
 
 
@@ -27,7 +47,9 @@ const Game = () => {
                 </div>
             </header>
             {showMenu == true ? <Menu setShowMenu={setShowMenu} /> : null}
-
+            <main className="max-md:px-6">
+                <Grid gridSize={gridSize} themeData={theme == 'Numbers' ? numsData : symbolsData} />
+            </main>
         </>
     )
 }
