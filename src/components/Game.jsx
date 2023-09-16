@@ -1,13 +1,21 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import Menu from "./Menu"
 import { useState } from "react"
 
 const Game = () => {
     const [showMenu, setShowMenu] = useState(false)
-
     const menuHandler = () => {
         setShowMenu(!showMenu)
     }
+    const location = useLocation()
+    const searchParams = new URLSearchParams(location.search);
+    const theme = searchParams.get('theme')
+    const playerNum = searchParams.get('playerNum')
+    const gridSize = searchParams.get('gridSize')
+    console.log(gridSize);
+
+
+
     return (
         <>
             <header className="flex justify-between pt-7 px-6 items-center md:px-10 lg:px-[170px] lg:pt-16">
@@ -19,6 +27,7 @@ const Game = () => {
                 </div>
             </header>
             {showMenu == true ? <Menu setShowMenu={setShowMenu} /> : null}
+
         </>
     )
 }

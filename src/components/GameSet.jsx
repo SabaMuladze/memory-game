@@ -1,12 +1,18 @@
-import { Link } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import Game from './Game'
 import { useState } from "react"
-
 
 const GameSet = () => {
     const [theme, setTheme] = useState('Numbers')
     const [playerNum, setPlayerNum] = useState(1)
-    const [gridSize, setGridSize] = useState('4x4')
+    const [gridSize, setGridSize] = useState(16)
+    const navigate = useNavigate()
+
+    const sendInformation = () => {
+        if (theme && playerNum && gridSize) {
+            navigate(`/game?theme=${theme}&playerNum=${playerNum}&gridSize=${gridSize}`)
+        }
+    }
 
     return (
         <section className="bg-[#152938] w-full h-screen flex flex-col items-center px-6">
@@ -32,10 +38,10 @@ const GameSet = () => {
                 <div>
                     <p className="pb-3 text-[#7191A5]">Grid Size</p>
                     <div className="flex gap-3">
-                        <button onClick={() => setGridSize('4x4')} className={`py-[10px] w-[50%] bg-[#BCCED9] rounded-3xl hover:bg-[#6395B8] ${gridSize == '4x4' ? "active" : "bg-[#BCCED9]"} `}>4x4</button>
-                        <button onClick={() => setGridSize('6x6')} className={`py-[10px] w-[50%] bg-[#BCCED9] rounded-3xl hover:bg-[#6395B8] ${gridSize == '6x6' ? "active" : "bg-[#BCCED9]"}`}>6x6</button>
+                        <button onClick={() => setGridSize(16)} className={`py-[10px] w-[50%] bg-[#BCCED9] rounded-3xl hover:bg-[#6395B8] ${gridSize == 16 ? "active" : "bg-[#BCCED9]"} `}>4x4</button>
+                        <button onClick={() => setGridSize(36)} className={`py-[10px] w-[50%] bg-[#BCCED9] rounded-3xl hover:bg-[#6395B8] ${gridSize == 36 ? "active" : "bg-[#BCCED9]"}`}>6x6</button>
                     </div>
-                    <button className="w-full py-3 bg-[#FDA214] rounded-3xl mt-8"><Link to={'/game'} >Start Game</Link></button>
+                    <button onClick={sendInformation} className="w-full py-3 bg-[#FDA214] rounded-3xl mt-8">Start Game</button>
                 </div>
             </main>
         </section>
