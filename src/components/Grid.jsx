@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-const Grid = ({ gridSize, themeData }) => {
+const Grid = ({ gridSize, themeData, start }) => {
     const symbols = gridSize == 16 ? themeData[0].content : themeData[1].content
 
     const [cards, setCards] = useState([]);
@@ -45,15 +45,15 @@ const Grid = ({ gridSize, themeData }) => {
     };
 
     return (
-        <div className="flex justify-center max-md:mt-20 md:mt-32">
-            <div className={gridSize == 16 ? 'grid grid-cols-4 gap-5 place-items-center w-full max-w-[600px]' : 'grid grid-cols-6 gap-5  max-w-[600px]'}>
+        <div className="flex justify-center mt-20 mb-10">
+            <div onClick={start} className={gridSize == 16 ? 'grid grid-cols-4 gap-5 place-items-center w-full max-w-[600px]' : 'grid grid-cols-6 gap-4  max-w-[600px]'}>
                 {cards.map((symbol, index) => (
                     <div
                         key={index}
-                        className={gridSize == 16 ? `card md:h-28 md:w-28 max-md:h-[72px] max-md:w-[72px] cursor-auto  ${isCardFlipped(index) ? 'flipped' : ''}` : `card md:h-20 md:w-20 max-md:h-[50px] max-md:w-[50px]   ${isCardFlipped(index) ? 'flipped' : ''}`}
+                        className={gridSize == 16 ? `card md:h-28 md:w-28 max-md:h-[72px] max-md:w-[72px] cursor-pointer  ${isCardFlipped(index) ? 'flipped' : ''}` : `card md:h-20 md:w-20 max-md:h-[50px] max-md:w-[50px]   ${isCardFlipped(index) ? 'flipped' : ''}`}
                         onClick={() => handleCardClick(index)}
                     >
-                        <p className="pointer-events-none scale-150 text-white">{isCardFlipped(index) ? symbol : ''}</p>
+                        <p className="pointer-events-none scale-[250%] text-white">{isCardFlipped(index) ? symbol : ''}</p>
                     </div>
                 ))}
             </div>

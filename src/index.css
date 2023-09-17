@@ -33,7 +33,7 @@
     }
 
     .card.flipped {
-        @apply bg-[#BCCED9] transition-all
+        @apply bg-[#BCCED9]
     }
 
 
