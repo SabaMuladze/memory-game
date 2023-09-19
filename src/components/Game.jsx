@@ -1,8 +1,9 @@
 import { Link, useLocation } from "react-router-dom"
 import Menu from "./Menu"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Grid from "./Grid"
 import Solo from "./Solo"
+import Multiplayer from "./Multiplayer"
 
 
 const Game = () => {
@@ -37,9 +38,10 @@ const Game = () => {
     const start = () => {
         runs();
         setInterval(runs, 1000)
+
     }
 
-
+    const [moves, setMoves] = useState(0)
 
     let updatedS = time.s, updatedM = time.m
     const runs = () => {
@@ -55,8 +57,6 @@ const Game = () => {
         return setTime({ s: updatedS, m: updatedM })
     }
 
-
-
     return (
         <div className="flex flex-col justify-between min-h-screen">
             <header className="flex justify-between pt-7 px-6 items-center md:px-10 lg:px-[170px] lg:pt-16">
@@ -69,10 +69,11 @@ const Game = () => {
             </header>
             {showMenu == true ? <Menu setShowMenu={setShowMenu} /> : null}
             <main className="max-md:px-6">
-                <Grid start={start} gridSize={gridSize} themeData={theme == 'Numbers' ? numsData : symbolsData} />
+                <Grid start={start} gridSize={gridSize} themeData={theme == 'Numbers' ? numsData : symbolsData} setMoves={setMoves} />
             </main>
             <footer className="px-6 pb-6 w-full flex justify-center md:pb-[70px]">
-                <Solo time={time} />
+                {playerNum == 1 ? <Solo time={time} moves={moves} /> : null}
+                {playerNum > 1 ? <Multiplayer time={time} moves={moves} playerNum={playerNum} /> : null}
             </footer>
         </div>
     )

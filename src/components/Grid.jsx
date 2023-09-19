@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react"
+import Multiplayer from "./Multiplayer";
 
-const Grid = ({ gridSize, themeData, start }) => {
+const Grid = ({ gridSize, themeData, start, setMoves }) => {
     const symbols = gridSize == 16 ? themeData[0].content : themeData[1].content
 
     const [cards, setCards] = useState([]);
     const [flippedCards, setFlippedCards] = useState([]);
     const [matchedPairs, setMatchedPairs] = useState([]);
-
 
     const shuffleArray = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
@@ -20,7 +20,9 @@ const Grid = ({ gridSize, themeData, start }) => {
         setCards(initialCards);
     }, []);
 
+
     const handleCardClick = (index) => {
+        setMoves(prev => prev + 1)
         if (flippedCards.length === 2 || isCardFlipped(index)) {
             return;
         }
@@ -39,14 +41,12 @@ const Grid = ({ gridSize, themeData, start }) => {
             }
         }
     };
-
     const isCardFlipped = (index) => {
         return flippedCards.includes(index) || matchedPairs.includes(cards[index]);
     };
-
     return (
         <div className="flex justify-center mt-20 mb-10">
-            <div onClick={start} className={gridSize == 16 ? 'grid grid-cols-4 gap-5 place-items-center w-full max-w-[600px]' : 'grid grid-cols-6 gap-4  max-w-[600px]'}>
+            <div className={gridSize == 16 ? 'grid grid-cols-4 gap-5 place-items-center w-full max-w-[600px]' : 'grid grid-cols-6 gap-4  max-w-[600px]'}>
                 {cards.map((symbol, index) => (
                     <div
                         key={index}
