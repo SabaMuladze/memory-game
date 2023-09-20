@@ -36,7 +36,7 @@ const Game = () => {
     ]
     const [time, setTime] = useState({ s: 0, m: 0 })
     const start = () => {
-        runs();
+        // runs();
         setInterval(runs, 1000)
 
     }
@@ -63,8 +63,8 @@ const Game = () => {
                 <h2 className="">memory</h2>
                 <button onClick={menuHandler} className="px-5 py-2 bg-[#FDA214] rounded-3xl md:hidden ">Menu</button>
                 <div className="max-md:hidden flex gap-4">
-                    <button onClick={(e) => location.reload()} className="px-5 py-2 bg-[#FDA214] rounded-3xl ">Restart</button>
-                    <button className="px-5 py-2 bg-[#DFE7EC] rounded-3xl text-[#304859] "><Link to={'/setup'}>New Game</Link></button>
+                    <button onClick={(e) => location.reload()} className="px-5 py-2 bg-[#FDA214] rounded-3xl hover:opacity-75">Restart</button>
+                    <Link to={'/setup'}><button className="px-5 py-2 bg-[#DFE7EC] rounded-3xl text-[#304859] hover:bg-[#6395B8] hover:text-[white]">New Game</button></Link>
                 </div>
             </header>
             {showMenu == true ? <Menu setShowMenu={setShowMenu} /> : null}

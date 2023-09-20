@@ -20,9 +20,14 @@ const Grid = ({ gridSize, themeData, start, setMoves }) => {
         setCards(initialCards);
     }, []);
 
+    useEffect(() => {
+        return () => {
+            clearInterval(start())
+        }
+    }, [])
+
 
     const handleCardClick = (index) => {
-        setMoves(prev => prev + 1)
         if (flippedCards.length === 2 || isCardFlipped(index)) {
             return;
         }
@@ -30,6 +35,7 @@ const Grid = ({ gridSize, themeData, start, setMoves }) => {
         setFlippedCards(newFlippedCards);
 
         if (newFlippedCards.length === 2) {
+            setMoves(prev => prev + 1)
             const [firstIndex, secondIndex] = newFlippedCards;
             if (cards[firstIndex] === cards[secondIndex]) {
                 setMatchedPairs([...matchedPairs, cards[firstIndex]]);
@@ -50,14 +56,15 @@ const Grid = ({ gridSize, themeData, start, setMoves }) => {
                 {cards.map((symbol, index) => (
                     <div
                         key={index}
-                        className={gridSize == 16 ? `card md:h-28 md:w-28 max-md:h-[72px] max-md:w-[72px] cursor-pointer  ${isCardFlipped(index) ? 'flipped' : ''}` : `card md:h-20 md:w-20 max-md:h-[50px] max-md:w-[50px]   ${isCardFlipped(index) ? 'flipped' : ''}`}
+                        className={gridSize == 16 ? `card md:h-28 md:w-28 max-md:h-[72px] max-md:w-[72px] cursor-pointer rotate-0  ${isCardFlipped(index) ? 'flipped' : ''}` : `card md:h-20 md:w-20 max-md:h-[50px] max-md:w-[50px] cursor-pointer ${isCardFlipped(index) ? 'flipped' : ''}`}
                         onClick={() => handleCardClick(index)}
+                        style={`${isCardFlipped(index)}` ? { transform: 'rotateY(360deg)', transition: '0.1s' } : ' '}
                     >
                         <p className="pointer-events-none scale-[250%] text-white">{isCardFlipped(index) ? symbol : ''}</p>
                     </div>
                 ))}
             </div>
-        </div>
+        </div >
     );
 }
 

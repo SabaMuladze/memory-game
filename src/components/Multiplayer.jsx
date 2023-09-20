@@ -36,7 +36,7 @@ const Multiplayer = ({ time, moves, playerNum }) => {
                 <div className="w-[30%] relative flex flex-col items-center">
                     <span className="h-6 w-6 bg-[#FDA214] absolute top-[-10px] rotate-45 mx-auto"></span>
                     <div className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
-                        <p className="text-[#7191A5]">Player 1</p>
+                        <p className="text-[#7191A5]">Player 3</p>
                         <p className="text-3xl text-[#304859] flex items-center">0</p>
                     </div>
                 </div>
@@ -59,14 +59,14 @@ const Multiplayer = ({ time, moves, playerNum }) => {
                 <div className="w-[30%] relative flex flex-col items-center">
                     <span className="h-6 w-6 bg-[#FDA214] absolute top-[-10px] rotate-45 mx-auto"></span>
                     <div className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
-                        <p className="text-[#7191A5]">Player 1</p>
+                        <p className="text-[#7191A5]">Player 3</p>
                         <p className="text-3xl text-[#304859] flex items-center">0</p>
                     </div>
                 </div>
                 <div className="w-[30%] relative flex flex-col items-center">
                     <span className="h-6 w-6 bg-[#FDA214] absolute top-[-10px] rotate-45 mx-auto"></span>
                     <div className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
-                        <p className="text-[#7191A5]">Player 2</p>
+                        <p className="text-[#7191A5]">Player 4</p>
                         <p className="text-3xl text-[#304859] flex items-center">0</p>
                     </div>
                 </div>

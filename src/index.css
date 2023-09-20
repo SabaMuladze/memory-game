@@ -29,13 +29,12 @@
     }
 
     .card {
-        @apply flex items-center justify-center max-md:h-[72px] max-md:p-[42%] max-md:w-[72px] bg-[#304859] rounded-full
+        @apply flex items-center justify-center max-md:h-[72px] max-md:p-[42%] max-md:w-[72px] bg-[#304859] rounded-full hover:bg-[#6395B8]
     }
 
     .card.flipped {
         @apply bg-[#BCCED9]
     }
-
 
 }
 
@@ -44,4 +43,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.rotate-y-180 {
+    transform: rotateY(180deg);
 }
