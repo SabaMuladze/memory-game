@@ -58,7 +58,7 @@ const Game = () => {
     }
 
     return (
-        <div className="flex flex-col justify-between min-h-screen">
+        <div className="flex flex-col justify-between min-h-screen pb-5">
             <header className="flex justify-between pt-7 px-6 items-center md:px-10 lg:px-[170px] lg:pt-16">
                 <h2 className="">memory</h2>
                 <button onClick={menuHandler} className="px-5 py-2 bg-[#FDA214] rounded-3xl md:hidden ">Menu</button>
@@ -69,9 +69,9 @@ const Game = () => {
             </header>
             {showMenu == true ? <Menu setShowMenu={setShowMenu} /> : null}
             <main className="max-md:px-6">
-                <Grid start={start} gridSize={gridSize} themeData={theme == 'Numbers' ? numsData : symbolsData} setMoves={setMoves} />
+                <Grid start={start} gridSize={gridSize} themeData={theme == 'Numbers' ? numsData : symbolsData} setMoves={setMoves} moves={moves} time={time} />
             </main>
-            <footer className="px-6 pb-6 w-full flex justify-center md:pb-[70px]">
+            <footer className="px-6 w-full flex justify-center">
                 {playerNum == 1 ? <Solo time={time} moves={moves} /> : null}
                 {playerNum > 1 ? <Multiplayer time={time} moves={moves} playerNum={playerNum} /> : null}
             </footer>
