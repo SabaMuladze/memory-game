@@ -13,6 +13,8 @@ const Grid = ({ gridSize, themeData, start, setMoves, moves, time, setPoint, poi
     const setPoint2 = setPoint.setPoint2
     const point3 = point.point3;
     const setPoint3 = setPoint.setPoint3
+    const point4 = point.point4;
+    const setPoint4 = setPoint.setPoint4
 
     const shuffleArray = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
@@ -34,7 +36,7 @@ const Grid = ({ gridSize, themeData, start, setMoves, moves, time, setPoint, poi
 
 
     const handleCardClick = (index) => {
-        console.log(point.point);
+        console.log(point);
         console.log(indexs);
 
         if (flippedCards.length === 2 || isCardFlipped(index)) {
@@ -50,11 +52,18 @@ const Grid = ({ gridSize, themeData, start, setMoves, moves, time, setPoint, poi
                 setMatchedPairs([...matchedPairs, cards[firstIndex]]);
                 setFlippedCards([]);
                 setIndex(indexs + 1)
+                console.log(indexs);
                 if (indexs == 0) {
                     setPoint1(point1 + 1)
                 }
                 else if (indexs == 1) {
                     setPoint2(point2 + 1)
+                }
+                else if (indexs == 2) {
+                    setPoint3(point3 + 1)
+                }
+                else if (indexs == 3) {
+                    setPoint4(point4 + 1)
                 }
             } else {
                 setTimeout(() => {
