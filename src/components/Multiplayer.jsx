@@ -7,7 +7,7 @@ const Multiplayer = ({ time, moves, playerNum, point, index, setIndex }) => {
     const plrf3 = useRef(0)
 
     useEffect(() => {
-        const intervalId = setInterval(multiFunc, 500);
+        const intervalId = setInterval(multiFunc, 0);
         return () => clearInterval(intervalId);
 
     })
@@ -15,13 +15,13 @@ const Multiplayer = ({ time, moves, playerNum, point, index, setIndex }) => {
     const multiFunc = () => {
         if (playerNum == 2) {
             if (index == 0) {
-                plrf.current.style.backgroundColor = 'black';
+                plrf.current.style.backgroundColor = '#FDA214';
                 plrf1.current.style.backgroundColor = '#DFE7EC';
 
             }
             else if (index == 1) {
                 plrf.current.style.backgroundColor = '#DFE7EC';
-                plrf1.current.style.backgroundColor = 'black';
+                plrf1.current.style.backgroundColor = '#FDA214';
             }
             else {
                 setIndex(0)
@@ -29,18 +29,18 @@ const Multiplayer = ({ time, moves, playerNum, point, index, setIndex }) => {
         }
         if (playerNum == 3) {
             if (index == 0) {
-                plrf.current.style.backgroundColor = 'black';
+                plrf.current.style.backgroundColor = '#FDA214';
                 plrf1.current.style.backgroundColor = '#DFE7EC';
                 plrf2.current.style.backgroundColor = '#DFE7EC';
             }
             else if (index == 1) {
                 plrf.current.style.backgroundColor = '#DFE7EC';
                 plrf2.current.style.backgroundColor = '#DFE7EC';
-                plrf1.current.style.backgroundColor = 'black';
+                plrf1.current.style.backgroundColor = '#FDA214';
             }
             else if (index == 2) {
                 plrf.current.style.backgroundColor = '#DFE7EC';
-                plrf2.current.style.backgroundColor = 'black';
+                plrf2.current.style.backgroundColor = '#FDA214';
                 plrf1.current.style.backgroundColor = '#DFE7EC';
             }
             else {
@@ -49,7 +49,7 @@ const Multiplayer = ({ time, moves, playerNum, point, index, setIndex }) => {
         }
         if (playerNum == 4) {
             if (index == 0) {
-                plrf.current.style.backgroundColor = 'black';
+                plrf.current.style.backgroundColor = '#FDA214';
                 plrf1.current.style.backgroundColor = '#DFE7EC';
                 plrf2.current.style.backgroundColor = '#DFE7EC';
                 plrf3.current.style.backgroundColor = '#DFE7EC';
@@ -58,13 +58,13 @@ const Multiplayer = ({ time, moves, playerNum, point, index, setIndex }) => {
             else if (index == 1) {
                 plrf.current.style.backgroundColor = '#DFE7EC';
                 plrf2.current.style.backgroundColor = '#DFE7EC';
-                plrf1.current.style.backgroundColor = 'black';
+                plrf1.current.style.backgroundColor = '#FDA214';
                 plrf3.current.style.backgroundColor = '#DFE7EC';
 
             }
             else if (index == 2) {
                 plrf.current.style.backgroundColor = '#DFE7EC';
-                plrf2.current.style.backgroundColor = 'black';
+                plrf2.current.style.backgroundColor = '#FDA214';
                 plrf1.current.style.backgroundColor = '#DFE7EC';
                 plrf3.current.style.backgroundColor = '#DFE7EC';
 
@@ -73,7 +73,7 @@ const Multiplayer = ({ time, moves, playerNum, point, index, setIndex }) => {
                 plrf.current.style.backgroundColor = '#DFE7EC';
                 plrf2.current.style.backgroundColor = '#DFE7EC';
                 plrf1.current.style.backgroundColor = '#DFE7EC';
-                plrf3.current.style.backgroundColor = 'black';
+                plrf3.current.style.backgroundColor = '#FDA214';
 
             }
             else {
@@ -87,73 +87,78 @@ const Multiplayer = ({ time, moves, playerNum, point, index, setIndex }) => {
         <>
             {playerNum == 2 ? <div className="flex gap-5 w-full  max-w-[600px]">
                 <div className="w-[50%] relative flex flex-col items-center">
-                    <span className="h-6 w-6 bg-[#FDA214] absolute top-[-10px] rotate-45 mx-auto"></span>
+                    <span className={`h-6 w-6 bg-[#FDA214]  top-[-10px] rotate-45 mx-auto ${index == 0 ? `absolute` : `hidden`}`}></span>
                     <div ref={plrf} className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
                         <p className="text-[#7191A5]">Player 1</p>
                         <p className="text-3xl text-[#304859] flex items-center">{point.point}</p>
                     </div>
                 </div>
                 <div className="w-[50%] relative flex flex-col items-center">
-                    <span className="h-6 w-6 bg-[#FDA214] absolute top-[-10px] rotate-45 mx-auto"></span>
+                    <span className={`h-6 w-6 bg-[#FDA214]  top-[-10px] rotate-45 mx-auto ${index == 1 ? `absolute` : `hidden`}`}></span>
                     <div ref={plrf1} className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
                         <p className="text-[#7191A5]">Player 2</p>
                         <p className="text-3xl text-[#304859] flex items-center">{point.point2}</p>
                     </div>
                 </div>
-            </div> : null}
-            {playerNum == 3 ? <div className="flex gap-5 w-full  max-w-[600px]">
-                <div className="w-[30%] relative flex flex-col items-center">
-                    <span className="h-6 w-6 bg-[#FDA214] absolute top-[-10px] rotate-45 mx-auto"></span>
-                    <div ref={plrf} className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
-                        <p className="text-[#7191A5]">Player 1</p>
-                        <p className="text-3xl text-[#304859] flex items-center">{point.point}</p>
+            </div > : null
+            }
+            {
+                playerNum == 3 ? <div className="flex gap-5 w-full  max-w-[600px]">
+                    <div className="w-[30%] relative flex flex-col items-center">
+                        <span className={`h-6 w-6 bg-[#FDA214]  top-[-10px] rotate-45 mx-auto ${index == 0 ? `absolute` : `hidden`}`}></span>
+                        <div ref={plrf} className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
+                            <p className="text-[#7191A5]">Player 1</p>
+                            <p className="text-3xl text-[#304859] flex items-center">{point.point}</p>
+                        </div>
                     </div>
-                </div>
-                <div className="w-[30%] relative flex flex-col items-center">
-                    <span className="h-6 w-6 bg-[#FDA214] absolute top-[-10px] rotate-45 mx-auto"></span>
-                    <div ref={plrf1} className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
-                        <p className="text-[#7191A5]">Player 2</p>
-                        <p className="text-3xl text-[#304859] flex items-center">{point.point2}</p>
+                    <div className="w-[30%] relative flex flex-col items-center">
+                        <span className={`h-6 w-6 bg-[#FDA214]  top-[-10px] rotate-45 mx-auto ${index == 1 ? `absolute` : `hidden`}`}></span>
+                        <div ref={plrf1} className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
+                            <p className="text-[#7191A5]">Player 2</p>
+                            <p className="text-3xl text-[#304859] flex items-center">{point.point2}</p>
+                        </div>
                     </div>
-                </div>
-                <div className="w-[30%] relative flex flex-col items-center">
-                    <span className="h-6 w-6 bg-[#FDA214] absolute top-[-10px] rotate-45 mx-auto"></span>
-                    <div ref={plrf2} className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
-                        <p className="text-[#7191A5]">Player 3</p>
-                        <p className="text-3xl text-[#304859] flex items-center">{point.point3}</p>
+                    <div className="w-[30%] relative flex flex-col items-center">
+                        <span className={`h-6 w-6 bg-[#FDA214]  top-[-10px] rotate-45 mx-auto ${index == 2 ? `absolute` : `hidden`}`}></span>
+                        <div ref={plrf2} className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
+                            <p className="text-[#7191A5]">Player 3</p>
+                            <p className="text-3xl text-[#304859] flex items-center">{point.point3}</p>
+                        </div>
                     </div>
-                </div>
-            </div> : null}
-            {playerNum == 4 ? <div className="flex gap-5 w-full lg:w-[80%]">
-                <div className="w-[30%] relative flex flex-col items-center">
-                    <span className="h-6 w-6 bg-[#FDA214] absolute top-[-10px] rotate-45 mx-auto"></span>
-                    <div ref={plrf} className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
-                        <p className="text-[#7191A5]">Player 1</p>
-                        <p className="text-3xl text-[#304859] flex items-center">{point.point}</p>
+                </div> : null
+            }
+            {
+                playerNum == 4 ? <div className="flex gap-5 w-full lg:w-[80%]">
+                    <div className="w-[30%] relative flex flex-col items-center">
+                        <span className={`h-6 w-6 bg-[#FDA214]  top-[-10px] rotate-45 mx-auto ${index == 0 ? `absolute` : `hidden`}`}></span>
+                        <div ref={plrf} className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
+                            <p className="text-[#7191A5]">Player 1</p>
+                            <p className="text-3xl text-[#304859] flex items-center">{point.point}</p>
+                        </div>
                     </div>
-                </div>
-                <div className="w-[30%] relative flex flex-col items-center">
-                    <span className="h-6 w-6 bg-[#FDA214] absolute top-[-10px] rotate-45 mx-auto"></span>
-                    <div ref={plrf1} className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
-                        <p className="text-[#7191A5]">Player 2</p>
-                        <p className="text-3xl text-[#304859] flex items-center">{point.point2}</p>
+                    <div className="w-[30%] relative flex flex-col items-center">
+                        <span className={`h-6 w-6 bg-[#FDA214]  top-[-10px] rotate-45 mx-auto ${index == 1 ? `absolute` : `hidden`}`}></span>
+                        <div ref={plrf1} className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
+                            <p className="text-[#7191A5]">Player 2</p>
+                            <p className="text-3xl text-[#304859] flex items-center">{point.point2}</p>
+                        </div>
                     </div>
-                </div>
-                <div className="w-[30%] relative flex flex-col items-center">
-                    <span className="h-6 w-6 bg-[#FDA214] absolute top-[-10px] rotate-45 mx-auto"></span>
-                    <div ref={plrf2} className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
-                        <p className="text-[#7191A5]">Player 3</p>
-                        <p className="text-3xl text-[#304859] flex items-center">{point.point3}</p>
+                    <div className="w-[30%] relative flex flex-col items-center">
+                        <span className={`h-6 w-6 bg-[#FDA214]  top-[-10px] rotate-45 mx-auto ${index == 2 ? `absolute` : `hidden`}`}></span>
+                        <div ref={plrf2} className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
+                            <p className="text-[#7191A5]">Player 3</p>
+                            <p className="text-3xl text-[#304859] flex items-center">{point.point3}</p>
+                        </div>
                     </div>
-                </div>
-                <div className="w-[30%] relative flex flex-col items-center">
-                    <span className="h-6 w-6 bg-[#FDA214] absolute top-[-10px] rotate-45 mx-auto"></span>
-                    <div ref={plrf3} className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
-                        <p className="text-[#7191A5]">Player 4</p>
-                        <p className="text-3xl text-[#304859] flex items-center">{point.point4}</p>
+                    <div className="w-[30%] relative flex flex-col items-center">
+                        <span className={`h-6 w-6 bg-[#FDA214]  top-[-10px] rotate-45 mx-auto ${index == 3 ? `absolute` : `hidden`}`}></span>
+                        <div ref={plrf3} className="py-3 w-[100%] flex flex-col justify-center items-center bg-[#DFE7EC] rounded-md md:flex-row md:justify-between md:px-6 md:py-5">
+                            <p className="text-[#7191A5]">Player 4</p>
+                            <p className="text-3xl text-[#304859] flex items-center">{point.point4}</p>
+                        </div>
                     </div>
-                </div>
-            </div> : null}
+                </div> : null
+            }
         </>
     )
 }

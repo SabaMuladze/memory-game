@@ -47,12 +47,12 @@ const Grid = ({ gridSize, themeData, start, setMoves, moves, time, setPoint, poi
 
         if (newFlippedCards.length === 2) {
             setMoves(prev => prev + 1)
+            setIndex(indexs + 1)
+
             const [firstIndex, secondIndex] = newFlippedCards;
             if (cards[firstIndex] === cards[secondIndex]) {
                 setMatchedPairs([...matchedPairs, cards[firstIndex]]);
                 setFlippedCards([]);
-                setIndex(indexs + 1)
-                console.log(indexs);
                 if (indexs == 0) {
                     setPoint1(point1 + 1)
                 }
@@ -65,13 +65,14 @@ const Grid = ({ gridSize, themeData, start, setMoves, moves, time, setPoint, poi
                 else if (indexs == 3) {
                     setPoint4(point4 + 1)
                 }
+
             } else {
                 setTimeout(() => {
                     setFlippedCards([]);
                 }, 1000);
             }
-        }
-    };
+        };
+    }
     const isCardFlipped = (index) => {
         return flippedCards.includes(index) || matchedPairs.includes(cards[index]);
     };
