@@ -7,7 +7,9 @@ import Multiplayer from "./Multiplayer"
 
 
 const Game = () => {
+    const [index, setIndex] = useState(0)
     const [showMenu, setShowMenu] = useState(false)
+    const [point, setPoint] = useState(0)
     const menuHandler = () => {
         setShowMenu(!showMenu)
     }
@@ -69,11 +71,11 @@ const Game = () => {
             </header>
             {showMenu == true ? <Menu setShowMenu={setShowMenu} /> : null}
             <main className="max-md:px-6">
-                <Grid start={start} gridSize={gridSize} themeData={theme == 'Numbers' ? numsData : symbolsData} setMoves={setMoves} moves={moves} time={time} />
+                <Grid start={start} gridSize={gridSize} themeData={theme == 'Numbers' ? numsData : symbolsData} setMoves={setMoves} moves={moves} time={time} setPoint={setPoint} point={point} indexs={index} setIndex={setIndex} />
             </main>
             <footer className="px-6 w-full flex justify-center">
                 {playerNum == 1 ? <Solo time={time} moves={moves} /> : null}
-                {playerNum > 1 ? <Multiplayer time={time} moves={moves} playerNum={playerNum} /> : null}
+                {playerNum > 1 ? <Multiplayer time={time} moves={moves} playerNum={playerNum} point={point} index={index} setIndex={setIndex} /> : null}
             </footer>
         </div>
     )

@@ -2,9 +2,8 @@ import { useState, useEffect } from "react"
 import Multiplayer from "./Multiplayer";
 import { Link } from "react-router-dom";
 
-const Grid = ({ gridSize, themeData, start, setMoves, moves, time }) => {
+const Grid = ({ gridSize, themeData, start, setMoves, moves, time, setPoint, point, indexs, setIndex }) => {
     const symbols = gridSize == 16 ? themeData[0].content : themeData[1].content
-
     const [cards, setCards] = useState([]);
     const [flippedCards, setFlippedCards] = useState([]);
     const [matchedPairs, setMatchedPairs] = useState([]);
@@ -41,6 +40,8 @@ const Grid = ({ gridSize, themeData, start, setMoves, moves, time }) => {
             if (cards[firstIndex] === cards[secondIndex]) {
                 setMatchedPairs([...matchedPairs, cards[firstIndex]]);
                 setFlippedCards([]);
+                setPoint(point + 1)
+                setIndex(indexs + 1)
             } else {
                 setTimeout(() => {
                     setFlippedCards([]);
@@ -69,7 +70,7 @@ const Grid = ({ gridSize, themeData, start, setMoves, moves, time }) => {
                 </div>
             </div >
             {
-                matchedPairs.length == 3 ? <div className="bg-black bg-opacity-50 w-full min-h-screen absolute top-0 left-0 bottom-0 flex justify-center items-center z-50">
+                matchedPairs.length == finalModal ? <div className="bg-black bg-opacity-50 w-full min-h-screen absolute top-0 left-0 bottom-0 flex justify-center items-center z-50">
                     <main className="md:w-[650px] bg-white rounded-[10px] flex flex-col gap-6 p-6 opacity-100 max-md:w-[327px] md:p-14">
                         <div className=" text-center flex flex-col gap-2 mb-6">
                             <h2>You did it!</h2>
@@ -80,12 +81,12 @@ const Grid = ({ gridSize, themeData, start, setMoves, moves, time }) => {
                             <h3><span>{time.m}</span>:<span>{time.s >= 10 ? time.s : '0' + time.s}</span></h3>
                         </div>
                         <div className="p-4 bg-[#DFE7EC] rounded-md flex justify-between">
-                            <p>Time elapsed</p>
+                            <p>Moves</p>
                             <h3>{moves}</h3>
                         </div >
-                        <div className="flex justify-between items-center gap-4">
-                            <button onClick={(e) => location.reload()} className="px-5 py-2 w-[50%] bg-[#FDA214] rounded-3xl hover:opacity-75">Restart</button>
-                            <Link className="w-[50%]" to={'/setup'}><button className="px-5 w-[100%] py-2 bg-[#DFE7EC] rounded-3xl text-[#304859] hover:bg-[#6395B8] hover:text-[white]">New Game</button></Link>
+                        <div className="flex justify-between items-center gap-4 max-md:flex-col md:mt-6">
+                            <button onClick={(e) => location.reload()} className="px-5 py-2 w-[50%] max-md:w-[100%] bg-[#FDA214] rounded-3xl hover:opacity-75">Restart</button>
+                            <Link className="w-[50%] max-md:w-[100%]" to={'/setup'}><button className="px-5 w-[100%] py-2 bg-[#DFE7EC] rounded-3xl text-[#304859] hover:bg-[#6395B8] hover:text-[white]">New Game</button></Link>
                         </div>
                     </main>
                 </div> : null
