@@ -75,7 +75,7 @@ const Game = () => {
             </header>
             {showMenu == true ? <Menu setShowMenu={setShowMenu} /> : null}
             <main className="max-md:px-6">
-                <Grid start={start} gridSize={gridSize} themeData={theme == 'Numbers' ? numsData : symbolsData} setMoves={setMoves} moves={moves} time={time} setPoint={{ setPoint: setPoint, setPoint2: setPoint2, setPoint3: setPoint3, setPoint4: setPoint4 }} point={{ point: point, point2: point2, point3: point3, point4: point4 }} indexs={index} setIndex={setIndex} />
+                <Grid start={start} playerNum={playerNum} gridSize={gridSize} themeData={theme == 'Numbers' ? numsData : symbolsData} setMoves={setMoves} moves={moves} time={time} setPoint={{ setPoint: setPoint, setPoint2: setPoint2, setPoint3: setPoint3, setPoint4: setPoint4 }} point={{ point: point, point2: point2, point3: point3, point4: point4 }} indexs={index} setIndex={setIndex} />
             </main>
             <footer className="px-6 w-full flex justify-center">
                 {playerNum == 1 ? <Solo time={time} moves={moves} /> : null}
